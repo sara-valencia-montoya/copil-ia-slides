@@ -24,11 +24,11 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
 .deck{width:100vw;height:100vh;position:relative}
-.slide{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s ease;overflow:hidden}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s ease;overflow-x:hidden;overflow-y:auto}
 .slide.active{opacity:1;pointer-events:all}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 52px 12px;border-bottom:1px solid var(--border);flex-shrink:0}
 .tb-l{font-size:11px;color:var(--muted)}.tb-r{font-size:11px;color:var(--muted)}
-.inner{flex:1;padding:20px 52px 62px;display:flex;flex-direction:column;overflow:hidden}
+.inner{flex:1;padding:20px 52px 62px;display:flex;flex-direction:column;overflow-x:hidden;overflow-y:auto}
 /* ── scroll quand la fenêtre est plus petite que le contenu ── */
 @media (max-height: 750px),(max-width: 1100px){
   html,body{overflow:auto}
@@ -243,8 +243,143 @@ h2{font-size:26px;font-weight:700;letter-spacing:-.01em}
 <body>
 <div class="deck" id="deck">
 
-<!-- ===== 0: COVER ===== -->
+<!-- ===== 0: PAGE DE GARDE ===== -->
 <div class="slide active" id="s0">
+  <div class="inner" style="justify-content:center;text-align:center">
+    <h1 style="font-size:42px;letter-spacing:-.03em">COPIL AI PRODUCT</h1>
+    <p style="font-size:18px;color:var(--muted);margin-top:12px">Mardi 16 juin 2026</p>
+  </div>
+</div>
+
+<!-- ===== 1: EXECUTIVE SUMMARY ===== -->
+<div class="slide" id="s1">
+  <div class="topbar"><span class="tb-l">Chatbot IA GGE — Comité de Pilotage</span><span class="tb-r">16 juin 2026</span></div>
+  <div class="inner">
+    <div class="label">Executive Summary · COPIL</div>
+    <h2>Synthèse &amp; arbitrages</h2>
+
+    <!-- STRIP : météo + budget -->
+    <div class="exec-strip">
+
+      <!-- Météo -->
+      <div class="meteo-card" style="border-color:rgba(63,185,80,.45);background:rgba(63,185,80,.04)">
+        <div class="meteo-icon">☀️</div>
+        <div>
+          <div class="meteo-lbl">Météo projet</div>
+          <div class="meteo-status" style="color:var(--green)">🟢 On track</div>
+          <div class="meteo-sub">Sprint 1 en cours · MVP 10 août ciblé</div>
+        </div>
+      </div>
+
+      <!-- Budget -->
+      <div class="budget-card">
+        <div class="budget-lbl">Consommation budgétaire — à date</div>
+        <div class="budget-items">
+          <div class="budget-item">
+            <div class="bi-lbl">Global</div>
+            <div class="bi-val" style="color:var(--text)">71 j</div>
+            <div class="bi-sub">53 K€</div>
+          </div>
+          <div class="budget-item">
+            <div class="bi-lbl">KB</div>
+            <div class="bi-val">46 j</div>
+            <div class="bi-sub">35 K€</div>
+          </div>
+          <div class="budget-item">
+            <div class="bi-lbl">Website Agent</div>
+            <div class="bi-val">25 j</div>
+            <div class="bi-sub">18 K€</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /exec-strip -->
+
+    <!-- DECISIONS pleine largeur : 2 sous-colonnes prises | à arbitrer -->
+    <div class="exec-grid" style="grid-template-columns:1fr 1fr">
+
+      <!-- COL GAUCHE : décisions prises -->
+      <div class="exec-col">
+        <div class="exec-col-h dec">✅ Décisions prises</div>
+
+        <div class="dec-ei taken">
+          <div class="dec-ei-ico">✅</div>
+          <div class="dec-ei-body">
+            <div class="dec-ei-text"><strong>Stack technique retenue</strong> — Azure AI Foundry + Qdrant + LangChain</div>
+          </div>
+        </div>
+        <div class="dec-ei taken">
+          <div class="dec-ei-ico">✅</div>
+          <div class="dec-ei-body">
+            <div class="dec-ei-text"><strong>Périmètre MVP</strong> — 3 écoles pilotes : ESG Sport · LISSA · MBA ESG</div>
+          </div>
+        </div>
+        <div class="dec-ei taken">
+          <div class="dec-ei-ico">✅</div>
+          <div class="dec-ei-body">
+            <div class="dec-ei-text"><strong>Human-in-the-loop validé</strong> — interface de correction KB</div>
+          </div>
+        </div>
+        <div class="dec-ei taken">
+          <div class="dec-ei-ico">✅</div>
+          <div class="dec-ei-body">
+            <div class="dec-ei-text"><strong>Maquettes par école</strong> — validé avec le métier</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COL DROITE : à arbitrer -->
+      <div class="exec-col">
+        <div class="exec-col-h" style="color:var(--amber)">⏳ À arbitrer par le COPIL</div>
+
+        <div class="dec-ei pending">
+          <div class="dec-ei-ico">⏳</div>
+          <div class="dec-ei-body">
+            <div class="dec-ei-text"><strong>Langue</strong> — chatbot EN pour LISSA &amp; MBA ESG dans le MVP ou Pilote V2 ?<br><span style="font-size:10px">Effort : ~1 j dev</span></div>
+            <span class="dec-ei-dl">⏰ Avant démo S1 — 22 juin</span>
+          </div>
+        </div>
+        <div class="dec-ei pending">
+          <div class="dec-ei-ico">⏳</div>
+          <div class="dec-ei-body">
+            <div class="dec-ei-text"><strong>Facturation</strong> — coût par école (usage mesuré) ou mutualisé GGE ?<br><span style="font-size:10px">Impact : ROI par école &amp; extension post-MVP</span></div>
+            <span class="dec-ei-dl">⏰ Avant Sprint 2 — 23 juin</span>
+          </div>
+        </div>
+        <div class="dec-ei pending">
+          <div class="dec-ei-ico">⏳</div>
+          <div class="dec-ei-body">
+            <div class="dec-ei-text"><strong>Prospect non inscrit en base marketing</strong> — le chatbot peut-il engager un visiteur anonyme et simplifier la conversation pour maximiser le taux de conversion, sans pré-requis CRM ?</div>
+            <span class="dec-ei-dl">⏰ Arbitrage COPIL — avant Sprint 2</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /exec-grid -->
+
+    <!-- POINTS DE VIGILANCE -->
+    <div class="vigil-strip">
+      <div class="vigil-h">👁 Points de vigilance</div>
+      <div class="vigil-grid">
+
+        <div class="vigil-card">
+          <div class="vigil-title">Gouvernance de la Knowledge Base</div>
+          <div class="vigil-body">Pas de processus défini sur <strong>qui met à jour les données formations</strong>, à quelle fréquence, et qui valide la qualité. Sans cadre de gouvernance, la fiabilité de la KB se dégradera après le MVP — impactant directement la qualité des réponses du chatbot.</div>
+        </div>
+
+        <div class="vigil-card">
+          <div class="vigil-title">Incohérences entre sources de données</div>
+          <div class="vigil-body">Écarts constatés entre <strong>fichiers Excel marketing</strong> (à jour), <strong>sites web</strong> (potentiellement obsolètes) et <strong>kits phoning</strong>. Difficulté de monitoring de la qualité d'extraction à la source — la complexité du référentiel des données faisant foi est un risque de fond sur la fiabilité de la KB.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 2: COVER ===== -->
+<div class="slide" id="s2">
   <div class="inner" style="justify-content:center">
     <div class="cover-pill">Comité de Pilotage IA · GGE Éducation</div>
     <div class="label">Website Agent &amp; Knowledge Base — Sprint 1</div>
@@ -259,15 +394,15 @@ h2{font-size:26px;font-weight:700;letter-spacing:-.01em}
     <div class="cover-meta" style="margin-top:22px">
       <div class="cmi">16 juin 2026</div>
       <div class="cmi">·</div>
-      <div class="cmi">Head of Data &amp; Delivery <span>Ludovic Grauser</span></div>
+      <div class="cmi">Lead AI <span>Ludovic Grauser</span></div>
       <div class="cmi">·</div>
       <div class="cmi">Squad Hymaïa <span>Sara (PO) · Anis (Lead AI Engineer) · Tony (AI Engineer) · Jacob (AI Engineer) · Haroun (Software Engineer)</span></div>
     </div>
   </div>
 </div>
 
-<!-- ===== 1: KNOWLEDGE BASE ===== -->
-<div class="slide" id="s1">
+<!-- ===== 3: KNOWLEDGE BASE ===== -->
+<div class="slide" id="s3">
   <div class="topbar"><span class="tb-l">Fiche Projet — Knowledge Base GGE</span><span class="tb-r">16 juin 2026</span></div>
   <div class="inner">
     <div class="label">Fiche projet 1 / 2</div>
@@ -363,8 +498,8 @@ h2{font-size:26px;font-weight:700;letter-spacing:-.01em}
   </div>
 </div>
 
-<!-- ===== 2: CHATBOT WEBSITE AGENT ===== -->
-<div class="slide" id="s2">
+<!-- ===== 4: CHATBOT WEBSITE AGENT ===== -->
+<div class="slide" id="s4">
   <div class="topbar"><span class="tb-l">Fiche Projet — Chatbot Website Agent</span><span class="tb-r">16 juin 2026</span></div>
   <div class="inner">
     <div class="label">Fiche projet 2 / 2</div>
@@ -1307,8 +1442,8 @@ h2{font-size:26px;font-weight:700;letter-spacing:-.01em}
   </div>
 </div>
 
-<!-- ===== 3: TIMELINE ===== -->
-<div class="slide" id="s3">
+<!-- ===== 5: TIMELINE ===== -->
+<div class="slide" id="s5">
   <div class="topbar"><span class="tb-l">Chatbot IA GGE — Comité de Pilotage</span><span class="tb-r">16 juin 2026</span></div>
   <div class="inner">
     <div class="label">Roadmap</div>
@@ -1360,139 +1495,6 @@ h2{font-size:26px;font-weight:700;letter-spacing:-.01em}
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- ===== 4: EXECUTIVE SUMMARY ===== -->
-<div class="slide" id="s4">
-  <div class="topbar"><span class="tb-l">Chatbot IA GGE — Comité de Pilotage</span><span class="tb-r">16 juin 2026</span></div>
-  <div class="inner">
-    <div class="label">Executive Summary · COPIL</div>
-    <h2>Synthèse &amp; arbitrages</h2>
-
-    <!-- STRIP : météo + budget -->
-    <div class="exec-strip">
-
-      <!-- Météo -->
-      <div class="meteo-card" style="border-color:rgba(63,185,80,.45);background:rgba(63,185,80,.04)">
-        <div class="meteo-icon">☀️</div>
-        <div>
-          <div class="meteo-lbl">Météo projet</div>
-          <div class="meteo-status" style="color:var(--green)">🟢 On track</div>
-          <div class="meteo-sub">Sprint 1 en cours · MVP 10 août ciblé</div>
-        </div>
-      </div>
-
-      <!-- Budget -->
-      <div class="budget-card">
-        <div class="budget-lbl">Consommation budgétaire — à date 12 juin</div>
-        <div class="budget-items">
-          <div class="budget-item">
-            <div class="bi-lbl">Consommé</div>
-            <div class="bi-val" style="color:var(--text)">— j</div>
-            <div class="bi-sub">jours équipe à date</div>
-          </div>
-          <div class="budget-item">
-            <div class="bi-lbl">Budget total</div>
-            <div class="bi-val">— j</div>
-            <div class="bi-sub">enveloppe MVP</div>
-          </div>
-          <div class="budget-item">
-            <div class="bi-lbl">Burn rate</div>
-            <div class="bi-val">— %</div>
-            <div class="bi-sub">au 12 juin</div>
-          </div>
-          <div class="budget-item">
-            <div class="bi-lbl">Reste</div>
-            <div class="bi-val">— j</div>
-            <div class="bi-sub">pour S2 → MVP</div>
-          </div>
-        </div>
-        <div class="budget-bar"><div class="budget-bar-fill" id="bud-fill"></div></div>
-      </div>
-
-    </div><!-- /exec-strip -->
-
-    <!-- DECISIONS pleine largeur : 2 sous-colonnes prises | à arbitrer -->
-    <div class="exec-grid" style="grid-template-columns:1fr 1fr">
-
-      <!-- COL GAUCHE : décisions prises -->
-      <div class="exec-col">
-        <div class="exec-col-h dec">✅ Décisions prises</div>
-
-        <div class="dec-ei taken">
-          <div class="dec-ei-ico">✅</div>
-          <div class="dec-ei-body">
-            <div class="dec-ei-text"><strong>Stack technique retenue</strong> — Azure AI Foundry + Qdrant + LangChain</div>
-          </div>
-        </div>
-        <div class="dec-ei taken">
-          <div class="dec-ei-ico">✅</div>
-          <div class="dec-ei-body">
-            <div class="dec-ei-text"><strong>Périmètre MVP</strong> — 3 écoles pilotes : ESG Sport · LISSA · MBA ESG</div>
-          </div>
-        </div>
-        <div class="dec-ei taken">
-          <div class="dec-ei-ico">✅</div>
-          <div class="dec-ei-body">
-            <div class="dec-ei-text"><strong>Human-in-the-loop validé</strong> — interface de correction KB</div>
-          </div>
-        </div>
-        <div class="dec-ei taken">
-          <div class="dec-ei-ico">✅</div>
-          <div class="dec-ei-body">
-            <div class="dec-ei-text"><strong>Maquettes par école</strong> — validé avec le métier</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- COL DROITE : à arbitrer -->
-      <div class="exec-col">
-        <div class="exec-col-h" style="color:var(--amber)">⏳ À arbitrer par le COPIL</div>
-
-        <div class="dec-ei pending">
-          <div class="dec-ei-ico">⏳</div>
-          <div class="dec-ei-body">
-            <div class="dec-ei-text"><strong>Langue</strong> — chatbot EN pour LISSA &amp; MBA ESG dans le MVP ou Pilote V2 ?<br><span style="font-size:10px">Effort : ~1 j dev</span></div>
-            <span class="dec-ei-dl">⏰ Avant démo S1 — 22 juin</span>
-          </div>
-        </div>
-        <div class="dec-ei pending">
-          <div class="dec-ei-ico">⏳</div>
-          <div class="dec-ei-body">
-            <div class="dec-ei-text"><strong>Facturation</strong> — coût par école (usage mesuré) ou mutualisé GGE ?<br><span style="font-size:10px">Impact : ROI par école &amp; extension post-MVP</span></div>
-            <span class="dec-ei-dl">⏰ Avant Sprint 2 — 23 juin</span>
-          </div>
-        </div>
-        <div class="dec-ei pending">
-          <div class="dec-ei-ico">⏳</div>
-          <div class="dec-ei-body">
-            <div class="dec-ei-text"><strong>Prospect non inscrit en base marketing</strong> — le chatbot peut-il engager un visiteur anonyme et simplifier la conversation pour maximiser le taux de conversion, sans pré-requis CRM ?</div>
-            <span class="dec-ei-dl">⏰ Arbitrage COPIL — avant Sprint 2</span>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /exec-grid -->
-
-    <!-- POINTS DE VIGILANCE -->
-    <div class="vigil-strip">
-      <div class="vigil-h">👁 Points de vigilance</div>
-      <div class="vigil-grid">
-
-        <div class="vigil-card">
-          <div class="vigil-title">Gouvernance de la Knowledge Base</div>
-          <div class="vigil-body">Pas de processus défini sur <strong>qui met à jour les données formations</strong>, à quelle fréquence, et qui valide la qualité. Sans cadre de gouvernance, la fiabilité de la KB se dégradera après le MVP — impactant directement la qualité des réponses du chatbot.</div>
-        </div>
-
-        <div class="vigil-card">
-          <div class="vigil-title">Incohérences entre sources de données</div>
-          <div class="vigil-body">Écarts constatés entre <strong>fichiers Excel marketing</strong> (à jour), <strong>sites web</strong> (potentiellement obsolètes) et <strong>kits phoning</strong>. Difficulté de monitoring de la qualité d'extraction à la source — la complexité du référentiel des données faisant foi est un risque de fond sur la fiabilité de la KB.</div>
-        </div>
-
-      </div>
-    </div>
-
   </div>
 </div>
 
